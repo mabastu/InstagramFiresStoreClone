@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  FeedController.swift
 //  InstagramFiresStoreClone
 //
 //  Created by Mabast on 11/6/22.
@@ -7,13 +7,10 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class FeedController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .systemRed
     }
-
-
 }
-
