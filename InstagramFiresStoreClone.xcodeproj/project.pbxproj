@@ -56,6 +56,12 @@
 		0A46C0A1291820B5005963FF /* InstagramFiresStoreClone */ = {
 			isa = PBXGroup;
 			children = (
+				0A46C0BB291820E7005963FF /* Model */,
+				0A46C0BA291820E5005963FF /* View */,
+				0A46C0B9291820E1005963FF /* ViewModel */,
+				0A46C0B8291820DE005963FF /* Controller */,
+				0A46C0B7291820D8005963FF /* API */,
+				0A46C0B6291820C1005963FF /* Utilites */,
 				0A46C0A2291820B5005963FF /* AppDelegate.swift */,
 				0A46C0A4291820B5005963FF /* SceneDelegate.swift */,
 				0A46C0A6291820B5005963FF /* ViewController.swift */,
@@ -65,6 +71,48 @@
 				0A46C0B0291820B7005963FF /* Info.plist */,
 			);
 			path = InstagramFiresStoreClone;
+			sourceTree = "<group>";
+		};
+		0A46C0B6291820C1005963FF /* Utilites */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilites;
+			sourceTree = "<group>";
+		};
+		0A46C0B7291820D8005963FF /* API */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		0A46C0B8291820DE005963FF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0A46C0B9291820E1005963FF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		0A46C0BA291820E5005963FF /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0A46C0BB291820E7005963FF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
