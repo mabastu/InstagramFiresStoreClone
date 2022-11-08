@@ -11,6 +11,8 @@ class RegistrationController: UIViewController {
     
     // MARK: - Properties
     
+    var viewModel = ViewModel()
+    
     private let addProfilePhotoButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "plus_photo"), for: .normal)
@@ -36,7 +38,7 @@ class RegistrationController: UIViewController {
     private let signupButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Sign Up", for: .normal)
-        button.setTitleColor(.white, for: .normal)
+        button.setTitleColor(.white.withAlphaComponent(0.5), for: .normal)
         button.backgroundColor = .systemPurple.withAlphaComponent(0.5)
         button.layer.cornerRadius = 5
         button.setHeight(50)
@@ -56,12 +58,26 @@ class RegistrationController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        configureNotificationObservers()
     }
     
     // MARK: - Actions
     
     @objc func navigateToLoginView() {
         navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func textFieldsDidChanged(sender: UITextField) {
+        if sender == emailTextField {
+            viewModel.email = sender.text
+        } else if sender == passwordTextField {
+            viewModel.password = sender.text
+        } else if sender == fullNameTextField {
+            viewModel.fullname = sender.text
+        } else {
+            viewModel.username = sender.text
+        }
+        updateFormUI(sender: signupButton, isEnabled: viewModel.signupFormIsValid)
     }
     
     // MARK: - Helpers
@@ -84,4 +100,13 @@ class RegistrationController: UIViewController {
         alreadyHaveAnAccountButton.centerX(inView: view)
         alreadyHaveAnAccountButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor)
     }
+    
+    func configureNotificationObservers() {
+        emailTextField.addTarget(self, action: #selector(textFieldsDidChanged), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textFieldsDidChanged), for: .editingChanged)
+        fullNameTextField.addTarget(self, action: #selector(textFieldsDidChanged), for: .editingChanged)
+        usernameTextField.addTarget(self, action: #selector(textFieldsDidChanged), for: .editingChanged)
+    }
 }
+
+

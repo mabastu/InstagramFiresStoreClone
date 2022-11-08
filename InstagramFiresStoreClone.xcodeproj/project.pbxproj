@@ -22,6 +22,7 @@
 		0A46C0D02919A348005963FF /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A46C0CF2919A348005963FF /* LoginController.swift */; };
 		0A46C0D22919A369005963FF /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A46C0D12919A369005963FF /* RegistrationController.swift */; };
 		0A46C0D42919B570005963FF /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A46C0D32919B570005963FF /* CustomTextField.swift */; };
+		0A46C0D6291A795C005963FF /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A46C0D5291A795C005963FF /* AuthenticationViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		0A46C0CF2919A348005963FF /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		0A46C0D12919A369005963FF /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		0A46C0D32919B570005963FF /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		0A46C0D5291A795C005963FF /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 		0A46C0B9291820E1005963FF /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				0A46C0D5291A795C005963FF /* AuthenticationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -222,6 +225,7 @@
 			files = (
 				0A46C0D42919B570005963FF /* CustomTextField.swift in Sources */,
 				0A46C0D02919A348005963FF /* LoginController.swift in Sources */,
+				0A46C0D6291A795C005963FF /* AuthenticationViewModel.swift in Sources */,
 				0A46C0A3291820B5005963FF /* AppDelegate.swift in Sources */,
 				0A46C0C5291825A1005963FF /* ImageSelectorConroller.swift in Sources */,
 				0A46C0C32918256B005963FF /* SearchController.swift in Sources */,

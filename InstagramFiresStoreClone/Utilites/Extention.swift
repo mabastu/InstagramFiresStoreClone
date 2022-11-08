@@ -8,6 +8,15 @@
 import UIKit
 
 extension UIViewController {
+    func updateFormUI(sender: UIButton, isEnabled: Bool) {
+        sender.isEnabled = isEnabled
+        sender.backgroundColor = isEnabled ? .systemPurple : .systemPurple.withAlphaComponent(0.5)
+        sender.setTitleColor(isEnabled ? .white : .white.withAlphaComponent(0.5), for: .normal)
+        
+    }
+}
+
+extension UIViewController {
     func configureGradientLayer() {
         let gradient = CAGradientLayer()
         gradient.colors = [UIColor.systemPurple.cgColor, UIColor.systemBlue.cgColor]

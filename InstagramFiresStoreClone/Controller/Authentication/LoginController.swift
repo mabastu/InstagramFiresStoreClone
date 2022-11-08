@@ -11,6 +11,8 @@ class LoginController: UIViewController {
     
     // MARK: - Properties
     
+    private var viewModel = ViewModel()
+    
     private let instagramLogo: UIImageView = {
         let image = UIImageView(image: UIImage(named: "Instagram_logo_white"))
         image.contentMode = .scaleAspectFill
@@ -32,8 +34,9 @@ class LoginController: UIViewController {
     private let loginButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Login", for: .normal)
-        button.setTitleColor(.white, for: .normal)
+        button.setTitleColor(.white.withAlphaComponent(0.5), for: .normal)
         button.backgroundColor = .systemPurple.withAlphaComponent(0.5)
+        button.isEnabled = false
         button.layer.cornerRadius = 5
         button.setHeight(50)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
@@ -58,6 +61,7 @@ class LoginController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        configureNotificationObservers()
     }
     
     // MARK: - Actions
@@ -65,6 +69,15 @@ class LoginController: UIViewController {
     @objc func navigateToSignupView() {
         let registrationController = RegistrationController()
         navigationController?.pushViewController(registrationController, animated: true)
+    }
+    
+    @objc func textFieldsDidChanged(sender: UITextField) {
+        if sender == emailTextField {
+            viewModel.email = sender.text
+        } else {
+            viewModel.password = sender.text
+        }
+        updateFormUI(sender: loginButton, isEnabled: viewModel.loginFormIsValid)
     }
     
     // MARK: - Helpers
@@ -90,5 +103,9 @@ class LoginController: UIViewController {
         dontHaveAccountButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor)
     }
     
+    func configureNotificationObservers() {
+        emailTextField.addTarget(self, action: #selector(textFieldsDidChanged), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textFieldsDidChanged), for: .editingChanged)
+    }
     
 }
