@@ -40,9 +40,10 @@ class LoginController: UIViewController {
         return button
     }()
     
-    private let dontHaveAccountButton: UIButton = {
+    private lazy var dontHaveAccountButton: UIButton = {
         let button = UIButton(type: .system)
         button.attributedTitle(regularText: "Don't have an account? ", boldText: "Sign up")
+        button.addTarget(self, action: #selector(navigateToSignupView), for: .touchUpInside)
         return button
     }()
     
@@ -59,18 +60,19 @@ class LoginController: UIViewController {
         configureUI()
     }
     
+    // MARK: - Actions
+    
+    @objc func navigateToSignupView() {
+        let registrationController = RegistrationController()
+        navigationController?.pushViewController(registrationController, animated: true)
+    }
+    
     // MARK: - Helpers
     
     func configureUI() {
-        view.backgroundColor = .white
+        configureGradientLayer()
         navigationController?.navigationBar.isHidden = true
         navigationController?.navigationBar.barStyle = .black
-        
-        let gradient = CAGradientLayer()
-        gradient.colors = [UIColor.systemPurple.cgColor, UIColor.systemBlue.cgColor]
-        gradient.locations = [0, 1]
-        view.layer.addSublayer(gradient)
-        gradient.frame = view.frame
         
         view.addSubview(instagramLogo)
         instagramLogo.centerX(inView: view)
@@ -87,4 +89,6 @@ class LoginController: UIViewController {
         dontHaveAccountButton.centerX(inView: view)
         dontHaveAccountButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor)
     }
+    
+    
 }
