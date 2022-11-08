@@ -13,9 +13,10 @@ class RegistrationController: UIViewController {
     
     var viewModel = ViewModel()
     
-    private let addProfilePhotoButton: UIButton = {
+    private lazy var addProfilePhotoButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "plus_photo"), for: .normal)
+        button.addTarget(self, action: #selector(selectProfilePhoto), for: .touchUpInside)
         button.tintColor = .white
         return button
     }()
@@ -80,6 +81,14 @@ class RegistrationController: UIViewController {
         updateFormUI(sender: signupButton, isEnabled: viewModel.signupFormIsValid)
     }
     
+    @objc func selectProfilePhoto() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        
+        present(imagePicker, animated: true)
+    }
+    
     // MARK: - Helpers
     
     func configureUI() {
@@ -109,4 +118,19 @@ class RegistrationController: UIViewController {
     }
 }
 
+// MARK: - UIImagePickerControllerDelegate
 
+extension RegistrationController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        guard let selectedImage = info[.editedImage] as? UIImage else { return }
+        
+        addProfilePhotoButton.layer.cornerRadius = addProfilePhotoButton.frame.width / 2
+        addProfilePhotoButton.layer.masksToBounds = true
+        addProfilePhotoButton.layer.borderColor = UIColor.white.cgColor
+        addProfilePhotoButton.layer.borderWidth = 2
+        addProfilePhotoButton.setImage(selectedImage.withRenderingMode(.alwaysOriginal), for: .normal)
+        
+        self.dismiss(animated: true)
+    }
+}
