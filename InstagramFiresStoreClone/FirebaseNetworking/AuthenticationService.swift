@@ -17,6 +17,10 @@ struct AuthenticationCredentials {
 }
 
 struct AuthenticationService {
+    static func logUserIn(email: String, password: String, completion: @escaping(AuthDataResult? ,Error?) -> Void) {
+        Auth.auth().signIn(withEmail: email, password: password, completion: completion)
+    }
+    
     static func registerUser(withCredentilas credentials: AuthenticationCredentials, completion: @escaping(Error?) -> Void) {
         
         ImageUploader.uploadImage(image: credentials.profileImage) { imageURL in

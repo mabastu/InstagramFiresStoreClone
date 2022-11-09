@@ -51,7 +51,7 @@ class RegistrationController: UIViewController {
     
     private lazy var alreadyHaveAnAccountButton: UIButton = {
         let button = UIButton(type: .system)
-        button.attributedTitle(regularText: "Already have an account? ", boldText: "Login.")
+        button.attributedTitle(regularText: "Already have an account? ", boldText: "Log in.")
         button.addTarget(self, action: #selector(navigateToLoginView), for: .touchUpInside)
         return button
     }()
@@ -105,7 +105,7 @@ class RegistrationController: UIViewController {
                 return
             }
             
-            print("Successfully registered user with firestore...")
+            self.dismiss(animated: true)
         }
     }
     
