@@ -12,6 +12,7 @@ class RegistrationController: UIViewController {
     // MARK: - Properties
     
     var viewModel = ViewModel()
+    private var profileImage: UIImage?
     
     private lazy var addProfilePhotoButton: UIButton = {
         let button = UIButton(type: .system)
@@ -36,7 +37,7 @@ class RegistrationController: UIViewController {
     private let fullNameTextField = CustomTextField(placeholder: "Full Name")
     private let usernameTextField = CustomTextField(placeholder: "Username")
  
-    private let signupButton: UIButton = {
+    private lazy var signupButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Sign Up", for: .normal)
         button.setTitleColor(.white.withAlphaComponent(0.5), for: .normal)
@@ -44,6 +45,7 @@ class RegistrationController: UIViewController {
         button.layer.cornerRadius = 5
         button.setHeight(50)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        button.addTarget(self, action: #selector(signUpRegistration), for: .touchUpInside)
         return button
     }()
     
@@ -89,6 +91,24 @@ class RegistrationController: UIViewController {
         present(imagePicker, animated: true)
     }
     
+    @objc func signUpRegistration() {
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        guard let fullname = fullNameTextField.text else { return }
+        guard let username = usernameTextField.text?.lowercased() else { return }
+        guard let profileImage = self.profileImage else { return }
+        
+        let credentials = AuthenticationCredentials(email: email, password: password, fullname: fullname, username: username, profileImage: profileImage)
+        AuthenticationService.registerUser(withCredentilas: credentials) { error in
+            if let error = error {
+                print("Failed to register user \(error.localizedDescription)")
+                return
+            }
+            
+            print("Successfully registered user with firestore...")
+        }
+    }
+    
     // MARK: - Helpers
     
     func configureUI() {
@@ -124,6 +144,7 @@ extension RegistrationController: UIImagePickerControllerDelegate, UINavigationC
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         guard let selectedImage = info[.editedImage] as? UIImage else { return }
+        profileImage = selectedImage
         
         addProfilePhotoButton.layer.cornerRadius = addProfilePhotoButton.frame.width / 2
         addProfilePhotoButton.layer.masksToBounds = true
