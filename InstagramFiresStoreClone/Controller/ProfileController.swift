@@ -13,6 +13,10 @@ class ProfileController: UICollectionViewController {
     let profileCellID = "profileCellID"
     let profileHeaderID = "profileHeaderID"
     
+    var user: User? {
+        didSet { navigationItem.title = user?.username }
+    }
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -21,6 +25,15 @@ class ProfileController: UICollectionViewController {
         view.backgroundColor = .systemMint
         collectionView.dataSource = self
         collectionView.delegate = self
+        fetchUser()
+    }
+    
+    // MARK: - FirebaseNetworking
+    
+    func fetchUser() {
+        UserService.fetchUser { user in
+            self.user = user
+        }
     }
     
     // MARK: - Helper
