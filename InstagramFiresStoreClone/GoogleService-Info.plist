@@ -19,15 +19,17 @@
 	<key>STORAGE_BUCKET</key>
 	<string>instagramcloneapp-52f8c.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
+	<key>FirebaseScreenReportingEnabled</key>
+	<false/>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:98290307258:ios:e2402d0b73b2c548fb7283</string>
 </dict>

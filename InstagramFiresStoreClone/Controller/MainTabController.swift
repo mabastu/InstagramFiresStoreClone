@@ -43,15 +43,16 @@ class MainTabController: UITabBarController {
     
     func configureViewControllers() {
         
-        let flowLayout = UICollectionViewFlowLayout()
+        let feedFlowLayout = UICollectionViewFlowLayout()
+        let profileFlowLayout = UICollectionViewFlowLayout()
         
         view.backgroundColor = .white
         
-        let feed = customNavigationController(unselectedImage: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house.fill"), rootViewController: FeedController(collectionViewLayout: flowLayout))
+        let feed = customNavigationController(unselectedImage: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house.fill"), rootViewController: FeedController(collectionViewLayout: feedFlowLayout))
         let search = customNavigationController(unselectedImage: UIImage(systemName: "magnifyingglass.circle"), selectedImage: UIImage(systemName: "magnifyingglass.circle.fill"), rootViewController: SearchController())
         let imageSelector = customNavigationController(unselectedImage: UIImage(systemName: "plus.square"), selectedImage: UIImage(systemName: "plus.square.fill"), rootViewController: ImageSelectorController())
         let notifications = customNavigationController(unselectedImage: UIImage(systemName: "bubble.left"), selectedImage: UIImage(systemName: "bubble.left.fill"), rootViewController: NotificationsController())
-        let profile = customNavigationController(unselectedImage: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"), rootViewController: ProfileController())
+        let profile = customNavigationController(unselectedImage: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"), rootViewController: ProfileController(collectionViewLayout: profileFlowLayout))
         
         viewControllers = [feed, search, imageSelector, notifications, profile]
     }
