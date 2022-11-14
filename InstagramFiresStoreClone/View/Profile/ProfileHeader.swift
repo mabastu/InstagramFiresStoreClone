@@ -6,20 +6,26 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ProfileHader: UICollectionReusableView {
     
     // MARK: - Properties
+    
+    var viewModel: ProfileHeaderViewModel? {
+        didSet { configure() }
+    }
+    
     private let profileImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "venom-7"))
+        let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
+        imageView.backgroundColor = .lightGray
         return imageView
     }()
     
     private let nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Mabast Othman"
         label.font = UIFont.boldSystemFont(ofSize: 14)
         return label
     }()
@@ -87,6 +93,7 @@ class ProfileHader: UICollectionReusableView {
         
     }
     
+    
     // MARK: - Lifecycle
     
     override init(frame: CGRect) {
@@ -135,6 +142,12 @@ class ProfileHader: UICollectionReusableView {
         return attributedText
     }
     
+    func configure() {
+        guard let viewModel = viewModel else { return }
+        
+        nameLabel.text = viewModel.fullname
+        profileImageView.sd_setImage(with: viewModel.profileImageUrl)
+    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
