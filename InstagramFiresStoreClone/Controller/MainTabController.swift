@@ -10,20 +10,29 @@ import Firebase
 
 class MainTabController: UITabBarController {
     
-    // MARK: - Lifecycle
+    var user: User? {
+        didSet {
+            guard let user = user else { return }
+            configureViewControllers(with: user)
+        }
+    }
     
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchUser()
         tabBarConfiguration()
-        configureViewControllers()
         checkIfUserIsLogin()
     }
+    
+    // MARK: - Network Call
     
     func checkIfUserIsLogin() {
         if Auth.auth().currentUser == nil {
             DispatchQueue.main.async {
                 let controller = LoginController()
+                controller.delegate = self
                 let navigation = UINavigationController(rootViewController: controller)
                 navigation.modalPresentationStyle = .fullScreen
                 self.present(navigation, animated: true)
@@ -31,6 +40,12 @@ class MainTabController: UITabBarController {
         }
     }
     
+    func fetchUser() {
+        UserService.fetchUser { user in
+            self.user = user
+            self.navigationItem.title = user.username
+        }
+    }
     
     // MARK: - Helpers
     
@@ -41,18 +56,17 @@ class MainTabController: UITabBarController {
         }
     }
     
-    func configureViewControllers() {
+    func configureViewControllers(with user: User) {
         
         let feedFlowLayout = UICollectionViewFlowLayout()
-        let profileFlowLayout = UICollectionViewFlowLayout()
-        
-        view.backgroundColor = .white
         
         let feed = customNavigationController(unselectedImage: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house.fill"), rootViewController: FeedController(collectionViewLayout: feedFlowLayout))
         let search = customNavigationController(unselectedImage: UIImage(systemName: "magnifyingglass.circle"), selectedImage: UIImage(systemName: "magnifyingglass.circle.fill"), rootViewController: SearchController())
         let imageSelector = customNavigationController(unselectedImage: UIImage(systemName: "plus.square"), selectedImage: UIImage(systemName: "plus.square.fill"), rootViewController: ImageSelectorController())
         let notifications = customNavigationController(unselectedImage: UIImage(systemName: "bubble.left"), selectedImage: UIImage(systemName: "bubble.left.fill"), rootViewController: NotificationsController())
-        let profile = customNavigationController(unselectedImage: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"), rootViewController: ProfileController(collectionViewLayout: profileFlowLayout))
+        
+        let profileController = ProfileController(user: user)
+        let profile = customNavigationController(unselectedImage: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"), rootViewController: profileController)
         
         viewControllers = [feed, search, imageSelector, notifications, profile]
     }
@@ -66,4 +80,12 @@ class MainTabController: UITabBarController {
         return navigation
     }
     
+}
+
+
+extension MainTabController: AuthenticationDelegate {
+    func authenticationDidComplete() {
+        self.dismiss(animated: true)
+        fetchUser()
+    }
 }

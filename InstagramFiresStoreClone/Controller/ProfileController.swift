@@ -13,11 +13,18 @@ class ProfileController: UICollectionViewController {
     let profileCellID = "profileCellID"
     let profileHeaderID = "profileHeaderID"
     
-    var user: User? {
-        didSet { collectionView.reloadData() }
-    }
+    private var user: User
     
     // MARK: - Lifecycle
+    
+    init(user: User) {
+        self.user = user
+        super.init(collectionViewLayout: UICollectionViewFlowLayout())
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,17 +32,8 @@ class ProfileController: UICollectionViewController {
         view.backgroundColor = .systemMint
         collectionView.dataSource = self
         collectionView.delegate = self
-        fetchUser()
     }
     
-    // MARK: - FirebaseNetworking
-    
-    func fetchUser() {
-        UserService.fetchUser { user in
-            self.user = user
-            self.navigationItem.title = user.username
-        }
-    }
     
     // MARK: - Helper
     
@@ -62,9 +60,7 @@ extension ProfileController {
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: profileHeaderID, for: indexPath) as! ProfileHader
         
-        if let user = user {
-            header.viewModel = ProfileHeaderViewModel(user: user)
-        } 
+        header.viewModel = ProfileHeaderViewModel(user: user)
         return header
     }
     
