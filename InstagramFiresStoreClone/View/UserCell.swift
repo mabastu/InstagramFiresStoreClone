@@ -6,12 +6,18 @@
 //
 
 import UIKit
+import SDWebImage
 
 class UserCell: UITableViewCell {
     
     // MARK: - Properties
+    
+    var viewModel: UserCellViewModel? {
+        didSet { configure() }
+    }
+    
     private let profileImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "venom-7"))
+        let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.backgroundColor = .lightGray
@@ -21,17 +27,16 @@ class UserCell: UITableViewCell {
     private let username: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 14)
-        label.text = "Venom"
         return label
     }()
     
     private let fullname: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14)
-        label.text = "I'm Venom"
         label.textColor = .lightGray
         return label
     }()
+    
     // MARK: - Lifecycle
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -56,4 +61,12 @@ class UserCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Helpers
+    
+    func configure() {
+        guard let viewModel = viewModel else { return }
+        username.text = viewModel.username
+        fullname.text = viewModel.fullname
+        profileImageView.sd_setImage(with: viewModel.profileImageUrl)
+    }
 }

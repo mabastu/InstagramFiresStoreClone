@@ -36,6 +36,7 @@
 		0A060492291AFE0500653B53 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 0A060491291AFE0500653B53 /* FirebaseStorageCombine-Community */; };
 		0A060495291AFE7E00653B53 /* ActiveLabel in Frameworks */ = {isa = PBXBuildFile; productRef = 0A060494291AFE7E00653B53 /* ActiveLabel */; };
 		0A060498291AFF1100653B53 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 0A060497291AFF1100653B53 /* SDWebImage */; };
+		0A11800E292436FE00C02D6F /* UserCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A11800D292436FE00C02D6F /* UserCellViewModel.swift */; };
 		0A46C0A3291820B5005963FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A46C0A2291820B5005963FF /* AppDelegate.swift */; };
 		0A46C0A5291820B5005963FF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A46C0A4291820B5005963FF /* SceneDelegate.swift */; };
 		0A46C0AC291820B7005963FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A46C0AB291820B7005963FF /* Assets.xcassets */; };
@@ -66,6 +67,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A11800D292436FE00C02D6F /* UserCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellViewModel.swift; sourceTree = "<group>"; };
 		0A46C09F291820B5005963FF /* InstagramFiresStoreClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramFiresStoreClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A46C0A2291820B5005963FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A46C0A4291820B5005963FF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 			children = (
 				0A46C0CE2919A31D005963FF /* Authentication */,
 				0A46C0BE291822B8005963FF /* MainTabController.swift */,
+				0A46C0D12919A369005963FF /* RegistrationController.swift */,
 				0A46C0C029182562005963FF /* FeedController.swift */,
 				0A46C0C22918256B005963FF /* SearchController.swift */,
 				0A46C0C4291825A1005963FF /* ImageSelectorConroller.swift */,
@@ -210,6 +213,7 @@
 			children = (
 				0A46C0D5291A795C005963FF /* AuthenticationViewModel.swift */,
 				0AA01FF129223D5F007FF8AC /* ProfileHeaderViewModel.swift */,
+				0A11800D292436FE00C02D6F /* UserCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -237,7 +241,6 @@
 			isa = PBXGroup;
 			children = (
 				0A46C0CF2919A348005963FF /* LoginController.swift */,
-				0A46C0D12919A369005963FF /* RegistrationController.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				0AB6F9AF291BDE700063C917 /* ImageUploader.swift in Sources */,
 				0A46C0D6291A795C005963FF /* AuthenticationViewModel.swift in Sources */,
 				0A46C0A3291820B5005963FF /* AppDelegate.swift in Sources */,
+				0A11800E292436FE00C02D6F /* UserCellViewModel.swift in Sources */,
 				0A46C0C5291825A1005963FF /* ImageSelectorConroller.swift in Sources */,
 				0A46C0C32918256B005963FF /* SearchController.swift in Sources */,
 				0AB6F9B1291BDE920063C917 /* AuthenticationService.swift in Sources */,
