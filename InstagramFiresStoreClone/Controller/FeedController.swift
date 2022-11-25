@@ -39,13 +39,22 @@ class FeedController: UICollectionViewController {
     func configureUI() {
         collectionView.register(FeedCell.self, forCellWithReuseIdentifier: cellID)
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Log out", style: .plain, target: self, action: #selector(logOut))
-        navigationItem.title = "Feed"
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 150, height: 40))
+        imageView.contentMode = .scaleAspectFit
+        
+        let image = UIImage(named: "instagram-dark-logo")
+        imageView.image = image
+        
+        navigationItem.titleView = imageView
+        
+        //            self.navigationItem.titleView = imageView
+        //        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Log out", style: .plain, target: self, action: #selector(logOut))
+        
     }
     
 }
 
-    // MARK: - UICollectionViewDataSource
+// MARK: - UICollectionViewDataSource
 
 extension FeedController {
     
@@ -59,7 +68,7 @@ extension FeedController {
     }
 }
 
-    // MARK: - UICollectionViewDelegateFlowLayout
+// MARK: - UICollectionViewDelegateFlowLayout
 
 extension FeedController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

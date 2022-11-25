@@ -59,6 +59,8 @@
 		0AA01FEE291FE103007FF8AC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA01FED291FE103007FF8AC /* User.swift */; };
 		0AA01FF229223D5F007FF8AC /* ProfileHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA01FF129223D5F007FF8AC /* ProfileHeaderViewModel.swift */; };
 		0AA01FF42922E1B7007FF8AC /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA01FF32922E1B7007FF8AC /* UserCell.swift */; };
+		0AAEE4DE292920D400970D5E /* UploadPostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAEE4DD292920D400970D5E /* UploadPostController.swift */; };
+		0AAEE4E02930C9E500970D5E /* InputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAEE4DF2930C9E500970D5E /* InputTextView.swift */; };
 		0AB6F9AD291B0BF60063C917 /* YPImagePicker in Frameworks */ = {isa = PBXBuildFile; productRef = 0AB6F9AC291B0BF60063C917 /* YPImagePicker */; };
 		0AB6F9AF291BDE700063C917 /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB6F9AE291BDE700063C917 /* ImageUploader.swift */; };
 		0AB6F9B1291BDE920063C917 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB6F9B0291BDE920063C917 /* AuthenticationService.swift */; };
@@ -92,6 +94,8 @@
 		0AA01FED291FE103007FF8AC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0AA01FF129223D5F007FF8AC /* ProfileHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderViewModel.swift; sourceTree = "<group>"; };
 		0AA01FF32922E1B7007FF8AC /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		0AAEE4DD292920D400970D5E /* UploadPostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPostController.swift; sourceTree = "<group>"; };
+		0AAEE4DF2930C9E500970D5E /* InputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextView.swift; sourceTree = "<group>"; };
 		0AB6F9AE291BDE700063C917 /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
 		0AB6F9B0291BDE920063C917 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		0AB6F9B3291C7F9B0063C917 /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
@@ -203,6 +207,7 @@
 				0A46C0C4291825A1005963FF /* ImageSelectorConroller.swift */,
 				0A46C0C6291825B3005963FF /* NotificationsController.swift */,
 				0A46C0C8291825E0005963FF /* ProfileController.swift */,
+				0AAEE4DD292920D400970D5E /* UploadPostController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -224,6 +229,7 @@
 				0A46C0CA29183F46005963FF /* FeedCell.swift */,
 				0A46C0D32919B570005963FF /* CustomTextField.swift */,
 				0AA01FF32922E1B7007FF8AC /* UserCell.swift */,
+				0AAEE4DF2930C9E500970D5E /* InputTextView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -365,6 +371,7 @@
 			files = (
 				0A46C0D42919B570005963FF /* CustomTextField.swift in Sources */,
 				0A46C0D02919A348005963FF /* LoginController.swift in Sources */,
+				0AAEE4DE292920D400970D5E /* UploadPostController.swift in Sources */,
 				0AB6F9AF291BDE700063C917 /* ImageUploader.swift in Sources */,
 				0A46C0D6291A795C005963FF /* AuthenticationViewModel.swift in Sources */,
 				0A46C0A3291820B5005963FF /* AppDelegate.swift in Sources */,
@@ -386,6 +393,7 @@
 				0AA01FF229223D5F007FF8AC /* ProfileHeaderViewModel.swift in Sources */,
 				0A46C0CB29183F46005963FF /* FeedCell.swift in Sources */,
 				0AA01FEE291FE103007FF8AC /* User.swift in Sources */,
+				0AAEE4E02930C9E500970D5E /* InputTextView.swift in Sources */,
 				0AA01FF42922E1B7007FF8AC /* UserCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
