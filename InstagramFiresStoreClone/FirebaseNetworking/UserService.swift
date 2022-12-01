@@ -8,9 +8,9 @@
 import UIKit
 import Firebase
 
+typealias FirestoreCompletion = (Error?) -> Void
+
 struct UserService {
-    
-    typealias FirestoreCompletion = (Error?) -> Void
     
     static func fetchUser(completion: @escaping(User) -> Void) {
         guard let uid = Auth.auth().currentUser?.uid else { return }

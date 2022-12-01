@@ -90,6 +90,8 @@ class MainTabController: UITabBarController {
             picker.dismiss(animated: true) {
                 guard let selectedImage = items.singlePhoto?.image else { return }
                 let controller = UploadPostController()
+                controller.delegate = self
+                controller.selectedImage = selectedImage
                 let navigation = UINavigationController(rootViewController: controller)
                 navigation.modalPresentationStyle = .fullScreen
                 self.present(navigation, animated: true)
@@ -128,5 +130,12 @@ extension MainTabController: UITabBarControllerDelegate {
             didFinishPickingMedia(picker)
         }
         return true
+    }
+}
+
+extension MainTabController: UploadPostControllerDelegate {
+    func controllerDidFinishUploadingPost(_ controller: UploadPostController) {
+        selectedIndex = 0
+        controller.dismiss(animated: true)
     }
 }
