@@ -6,13 +6,26 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 extension UIViewController {
+    
+    static let hud = JGProgressHUD(style: .dark)
+    
     func updateFormUI(sender: UIButton, isEnabled: Bool) {
         sender.isEnabled = isEnabled
         sender.backgroundColor = isEnabled ? .systemPurple : .systemPurple.withAlphaComponent(0.5)
         sender.setTitleColor(isEnabled ? .white : .white.withAlphaComponent(0.5), for: .normal)
+    }
+    
+    func showLoader(_ show: Bool) {
+        view.endEditing(true)
         
+        if show {
+            UIViewController.hud.show(in: view)
+        } else {
+            UIViewController.hud.dismiss()
+        }
     }
 }
 

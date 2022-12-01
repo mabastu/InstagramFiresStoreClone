@@ -32,10 +32,10 @@ struct AuthenticationService {
                 guard let uid = result?.user.uid else { return }
                 
                 let data: [String: Any] = [ "email" : credentials.email,
-                                           "fullname" : credentials.fullname,
-                                           "profileImage" : imageURL,
-                                           "uid" : uid,
-                                           "username" : credentials.username
+                                            "fullname" : credentials.fullname,
+                                            "profileImage" : imageURL,
+                                            "uid" : uid,
+                                            "username" : credentials.username
                 ]
                 
                 COLLECTION_USERS.document(uid).setData(data, completion: completion)
