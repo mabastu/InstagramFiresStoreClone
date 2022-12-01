@@ -25,17 +25,9 @@ class FeedController: UICollectionViewController {
     
     // MARK: - Actions
     
-    @objc func logOut() {
-        do {
-            try Auth.auth().signOut()
-            let controller = LoginController()
-            controller.delegate = self.tabBarController as? MainTabController
-            let navigation = UINavigationController(rootViewController: controller)
-            navigation.modalPresentationStyle = .fullScreen
-            self.present(navigation, animated: true)
-        } catch {
-            print("Faild to sign out!")
-        }
+    @objc func refreshFeed() {
+        posts.removeAll()
+        fetchPosts()
     }
     
     // MARK: - Networking
@@ -43,6 +35,7 @@ class FeedController: UICollectionViewController {
     func fetchPosts() {
         PostService.fetchPosts { posts in
             self.posts = posts
+            self.collectionView.refreshControl?.endRefreshing()
             self.collectionView.reloadData()
         }
     }
@@ -60,8 +53,11 @@ class FeedController: UICollectionViewController {
         
         navigationItem.titleView = imageView
         
-        //            self.navigationItem.titleView = imageView
-        //        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Log out", style: .plain, target: self, action: #selector(logOut))
+        
+        
+        let refresher = UIRefreshControl()
+        refresher.addTarget(self, action: #selector(refreshFeed), for: .valueChanged)
+        collectionView.refreshControl = refresher
         
     }
     

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ProfileController: UICollectionViewController {
     
@@ -52,11 +53,29 @@ class ProfileController: UICollectionViewController {
         }
     }
     
+    // MARK: - Actions
+    
+    @objc func logOut() {
+        do {
+            try Auth.auth().signOut()
+            let controller = LoginController()
+            controller.delegate = self.tabBarController as? MainTabController
+            let navigation = UINavigationController(rootViewController: controller)
+            navigation.modalPresentationStyle = .fullScreen
+            self.present(navigation, animated: true)
+        } catch {
+            print("Faild to sign out!")
+        }
+    }
+    
     // MARK: - Helper
     
     func configerCollectionView() {
         collectionView.register(ProfileCell.self, forCellWithReuseIdentifier: profileCellID)
         collectionView.register(ProfileHader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: profileHeaderID)
+        
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log out", style: .plain, target: self, action: #selector(logOut))
     }
     
 }
