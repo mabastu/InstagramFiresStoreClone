@@ -11,6 +11,10 @@ class FeedCell: UICollectionViewCell {
     
     // MARK: - Properties
     
+    var viewModel: PostViewModel? {
+        didSet { configure() }
+    }
+    
     private let profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -38,7 +42,6 @@ class FeedCell: UICollectionViewCell {
     
     private let captionLabel: UILabel = {
         let label = UILabel()
-        label.text = "Some test caption for now..."
         label.font = UIFont.systemFont(ofSize: 14)
         return label
     }()
@@ -122,6 +125,13 @@ class FeedCell: UICollectionViewCell {
     }
     
     // MARK: - Helpers
+    
+    func configure() {
+        guard let viewModel = viewModel else { return }
+        
+        captionLabel.text = viewModel.caption
+        postImageView.sd_setImage(with: viewModel.imageUrl)
+    }
     
     func configureActionButton() {
         let stackView = UIStackView(arrangedSubviews: [like, comment, share])
