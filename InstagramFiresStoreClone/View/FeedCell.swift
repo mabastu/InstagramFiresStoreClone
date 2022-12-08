@@ -8,7 +8,7 @@
 import UIKit
 
 protocol FeedCellDelegate: AnyObject {
-    func cell(_ cell: FeedCell, wantsToShowComments for: Post)
+    func cell(_ cell: FeedCell, wantsToShowCommentsFor post: Post)
 }
 
 class FeedCell: UICollectionViewCell {
@@ -131,7 +131,7 @@ class FeedCell: UICollectionViewCell {
     
     @objc func didTapComment() {
         guard let viewModel = viewModel else { return }
-        delegate?.cell(self, wantsToShowComments: viewModel.post)
+        delegate?.cell(self, wantsToShowCommentsFor: viewModel.post)
     }
     
     // MARK: - Helpers

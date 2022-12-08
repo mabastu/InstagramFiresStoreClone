@@ -24,6 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         UITabBar.appearance().tintColor = .black
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
+        window?.backgroundColor = .white
         window?.rootViewController = MainTabController()
         window?.makeKeyAndVisible()
         
